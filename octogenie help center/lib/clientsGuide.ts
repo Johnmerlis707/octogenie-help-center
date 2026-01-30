@@ -1,0 +1,180 @@
+import { GuideSection } from "@/lib/types";
+
+
+export const addClientGuide: GuideSection = {
+  id: "add-client",
+  title: "Adding a New Client",
+  subtitle: "Register and onboard a new client into the OctoGenie platform",
+  description: "Follow these steps to create a new client profile",
+  estimatedTime: "5 min",
+  totalSteps: 7,
+  steps: [
+    {
+      number: 1,
+      title: "Go to Clients Section",
+      description: "Log in to your OctoGenie account. From the left-hand menu, click on Clients. The Clients page will open.",
+      image: "/assets/clients/clients-navigation.png",
+      imageAlt: "Clients section navigation",
+    },
+    {
+      number: 2,
+      title: "Click on Add New Client",
+      description: "Click the + Add New Client button at the top right corner. The Client Creation Form will open under the Personal Details tab.",
+      image: "/assets/clients/add-new-client.png",
+      imageAlt: "Add New Client button",
+    },
+    {
+      number: 3,
+      title: "Select Client Type",
+      description: "Choose the Client Type: Individual or Corporate.",
+      image: "",
+      imageAlt: "Client type selection",
+    },
+    {
+      number: 4,
+      title: "Enter Personal Details",
+      description: "Fill in all mandatory fields marked with (*):",
+      image: "",
+      imageAlt: "Personal details form",
+      tips: [
+        "Salutation – Select from the dropdown (Mr, Ms, etc.)",
+        "First Name",
+        "Last Name",
+        "Email ID",
+        "Phone Number",
+        "Alternate Phone Number (if available)",
+        "Domicile & Nationality",
+        "Occupation",
+        "Gender",
+      ],
+    },
+    {
+      number: 5,
+      title: "Click on Next Button",
+      description: "Click the Next button at the bottom right. The system will move to the next section (Addresses / KYC / Documents, etc.).",
+      imageAlt: "Next button",
+    },
+    {
+      number: 6,
+      title: "Complete Additional Tabs",
+      description: "You may continue filling: Address, KYC Validation, Documents, Client Onboarding, Internal Notes, Financial Records.",
+      imageAlt: "Additional tabs",
+    },
+    {
+      number: 7,
+      title: "Client Record Created",
+      description: "Once the required details are updated, click on the 'Create Client' button at the bottom right. The client will be successfully created and will appear in the Clients List.",
+      image: "/assets/clients/create-client-button.png",
+      imageAlt: "Create Client button",
+      expectedOutcome: "The client can now be linked to matters, assigned to cases, and used for billing and tracking.",
+      isLast: true,
+    },
+  ],
+};
+
+export const editClientGuide: GuideSection = {
+  id: "edit-client",
+  title: "Editing Client Details",
+  subtitle: "Update existing client information",
+  description: "Modify client details in the OctoGenie platform",
+  estimatedTime: "2 min",
+  totalSteps: 5,
+  steps: [
+    {
+      number: 1,
+      title: "Go to Clients Section",
+      description: "Go to the Clients section from the main menu.",
+      image: "/assets/clients/clients-navigation.png",
+      imageAlt: "Clients section",
+    },
+    {
+      number: 2,
+      title: "Select Client",
+      description: "Go to the specific client you want to edit.",
+      imageAlt: "Client list",
+    },
+    {
+      number: 3,
+      title: "View Client Details",
+      description: "Click on View details to open the client details.",
+      image: "/assets/clients/view-details.png",
+      imageAlt: "Client details view",
+    },
+    {
+      number: 4,
+      title: "Click Edit Button",
+      description: "Click the Edit button to enable editing mode.",
+      image: "/assets/clients/edit-client.png",
+      imageAlt: "Edit button",
+    },
+    {
+      number: 5,
+      title: "Update Details",
+      description: "Update the required details and save the changes.",
+      imageAlt: "Edit form",
+      expectedOutcome: "Client details are successfully updated and saved.",
+      isLast: true,
+    },
+  ],
+};
+
+export const uploadClientDocumentsGuide: GuideSection = {
+  id: "upload-documents",
+  title: "Uploading Client Documents",
+  subtitle: "Add documents to an existing client profile",
+  description: "Upload and manage client-related documents",
+  estimatedTime: "3 min",
+  totalSteps: 7,
+  steps: [
+    {
+      number: 1,
+      title: "Navigate to Clients Section",
+      description: "Navigate to the Clients section from the left-side menu.",
+      image: "/assets/clients/clients-navigation.png",
+      imageAlt: "Clients navigation",
+    },
+    {
+      number: 2,
+      title: "Select Client",
+      description: "Select the client for whom documents need to be uploaded.",
+      imageAlt: "Client selection",
+    },
+    {
+      number: 3,
+      title: "Click on Documents Tab",
+      description: "Click on the Documents tab to access the document upload section.",
+      imageAlt: "Documents tab",
+    },
+    {
+      number: 4,
+      title: "Upload Document",
+      description: "Under Document Upload, click Upload a file or drag and drop the document into the upload area.",
+      imageAlt: "Document upload area",
+    },
+    {
+      number: 5,
+      title: "Choose Document",
+      description: "Choose the required document from your system.",
+      imageAlt: "File selection",
+    },
+    {
+      number: 6,
+      title: "Verify Upload",
+      description: "Verify that the file is successfully uploaded.",
+      imageAlt: "Upload confirmation",
+    },
+    {
+      number: 7,
+      title: "Complete Process",
+      description: "Click Next to proceed to the next step or Save to complete.",
+      imageAlt: "Save button",
+      tips: [
+        "Uploading documents is optional.",
+        "Multiple documents can be uploaded one by one.",
+        "Uploaded documents will be available under the client's Documents tab for future reference.",
+      ],
+      expectedOutcome: "Documents are successfully uploaded and linked to the client profile.",
+      isLast: true,
+    },
+  ],
+};
