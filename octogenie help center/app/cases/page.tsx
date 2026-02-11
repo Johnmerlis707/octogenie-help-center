@@ -7,6 +7,7 @@ import {
   createCaseManualGuide,
   createCaseFromECourtGuide,
   closeCaseGuide,
+  editCaseGuide,
 } from "@/lib/casesGuide";
 
 export default function CasesPage() {
@@ -23,45 +24,19 @@ export default function CasesPage() {
           <span>Cases</span>
         </h1>
         <p className="text-lg text-gray-600 max-w-3xl">
-          Track court cases from filing to resolution with full case management.
+          Track and manage your legal cases within the OctoGenie platform. You can
+          manually create cases or import them directly from eCourt.
         </p>
       </div>
 
-      {/* What is Cases Section */}
-      <section id="what-is-case" className="space-y-6">
-        <div>
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-3">
-            What is the "Cases" feature?
-          </h2>
-          <p className="text-gray-700 leading-relaxed mb-4">
-            The Cases section in OctoGenie is where all legal cases handled by a
-            lawyer or law firm are created, stored, and managed. It acts as a
-            central workspace to track every case from start to finish.
-          </p>
-          <div className="bg-gray-50 rounded-lg p-4">
-            <p className="text-gray-700 mb-2">
-              In the Cases section, you can:
-            </p>
-            <ul className="list-disc list-inside text-gray-700 space-y-1">
-              <li>Create new legal cases</li>
-              <li>View all ongoing, closed, or pending cases</li>
-              <li>Track case status</li>
-              <li>Assign lawyers and team members</li>
-              <li>Store and access case-related documents</li>
-              <li>Monitor important dates and updates</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* Create Case - Manual Entry Section */}
+      {/* Manual Entry Section */}
       <section id="manual-entry" className="space-y-8">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Creating a Case - Manual Entry
+            {createCaseManualGuide.title}
           </h2>
           <p className="text-lg text-gray-600">
-            Manually create and register a new legal case
+            {createCaseManualGuide.subtitle}
           </p>
         </div>
 
@@ -72,9 +47,7 @@ export default function CasesPage() {
               <h3 className="text-xl font-bold text-gray-900 mb-2">
                 {createCaseManualGuide.title}
               </h3>
-              <p className="text-gray-600">
-                {createCaseManualGuide.description}
-              </p>
+              <p className="text-gray-600">{createCaseManualGuide.description}</p>
             </div>
             <div className="text-right">
               <div className="text-sm text-gray-500">
@@ -85,7 +58,6 @@ export default function CasesPage() {
               </div>
             </div>
           </div>
-          {/* Progress Indicator */}
           <div className="flex gap-1">
             {Array.from({ length: createCaseManualGuide.totalSteps }).map(
               (_, i) => (
@@ -98,7 +70,6 @@ export default function CasesPage() {
           </div>
         </div>
 
-        {/* Steps */}
         <div className="space-y-0">
           {createCaseManualGuide.steps.map((step, index) => (
             <GuideStep
@@ -108,28 +79,19 @@ export default function CasesPage() {
             />
           ))}
         </div>
-
-        {/* Completion Banner */}
-        <ProgressBanner
-          title="You're all set!"
-          description="The case is successfully created and appears in your Cases list."
-          icon="CheckCircle2"
-          variant="success"
-        />
       </section>
 
-      {/* Create Case - From eCourt Section */}
+      {/* eCourt Section */}
       <section id="ecourt" className="space-y-8">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Creating a Case - From eCourt
+            {createCaseFromECourtGuide.title}
           </h2>
           <p className="text-lg text-gray-600">
-            Import a case from eCourt database
+            {createCaseFromECourtGuide.subtitle}
           </p>
         </div>
 
-        {/* Guide Summary Card */}
         <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
           <div className="flex items-start justify-between mb-4">
             <div>
@@ -149,7 +111,6 @@ export default function CasesPage() {
               </div>
             </div>
           </div>
-          {/* Progress Indicator */}
           <div className="flex gap-1">
             {Array.from({ length: createCaseFromECourtGuide.totalSteps }).map(
               (_, i) => (
@@ -162,7 +123,6 @@ export default function CasesPage() {
           </div>
         </div>
 
-        {/* Steps */}
         <div className="space-y-0">
           {createCaseFromECourtGuide.steps.map((step, index) => (
             <GuideStep
@@ -172,57 +132,41 @@ export default function CasesPage() {
             />
           ))}
         </div>
+      </section>
 
-        {/* Completion Banner */}
-        <ProgressBanner
-          title="You're all set!"
-          description="The case is successfully imported from eCourt and appears in your Cases list."
-          icon="CheckCircle2"
-          variant="success"
-        />
+      {/* Edit Case Section */}
+      <section id="edit-case" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {editCaseGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {editCaseGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {editCaseGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === editCaseGuide.steps.length - 1}
+            />
+          ))}
+        </div>
       </section>
 
       {/* Close Case Section */}
       <section id="close-case" className="space-y-8">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            Closing a Case
+            {closeCaseGuide.title}
           </h2>
           <p className="text-lg text-gray-600">
-            Mark a case as closed
+            {closeCaseGuide.subtitle}
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {closeCaseGuide.title}
-              </h3>
-              <p className="text-gray-600">{closeCaseGuide.description}</p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {closeCaseGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {closeCaseGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: closeCaseGuide.totalSteps }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 flex-1 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Steps */}
         <div className="space-y-0">
           {closeCaseGuide.steps.map((step, index) => (
             <GuideStep
@@ -232,9 +176,15 @@ export default function CasesPage() {
             />
           ))}
         </div>
+
+        <ProgressBanner
+          title="Case Management Complete"
+          description="Efficiently track the lifecycle of your legal cases from registration to final resolution."
+          icon="Briefcase"
+          variant="success"
+        />
       </section>
 
-      {/* Feedback Section */}
       <FeedbackSection pageId="cases" />
     </div>
   );

@@ -7,6 +7,7 @@ import {
   addClientGuide,
   editClientGuide,
   uploadClientDocumentsGuide,
+  deleteClientGuide,
 } from "@/lib/clientsGuide";
 
 export default function ClientsPage() {
@@ -191,6 +192,58 @@ export default function ClientsPage() {
               key={step.number}
               {...step}
               isLast={index === uploadClientDocumentsGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Delete Client Section */}
+      <section id="delete-client" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            How to Delete a Client Record
+          </h2>
+          <p className="text-lg text-gray-600">
+            Permanently remove a client from the system
+          </p>
+        </div>
+
+        {/* Guide Summary Card */}
+        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                {deleteClientGuide.title}
+              </h3>
+              <p className="text-gray-600">{deleteClientGuide.description}</p>
+            </div>
+            <div className="text-right">
+              <div className="text-sm text-gray-500">
+                {deleteClientGuide.estimatedTime}
+              </div>
+              <div className="text-sm text-gray-500">
+                {deleteClientGuide.totalSteps} steps
+              </div>
+            </div>
+          </div>
+          {/* Progress Indicator */}
+          <div className="flex gap-1">
+            {Array.from({ length: deleteClientGuide.totalSteps }).map((_, i) => (
+              <div
+                key={i}
+                className="h-2 flex-1 bg-primary rounded-full"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Steps */}
+        <div className="space-y-0">
+          {deleteClientGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === deleteClientGuide.steps.length - 1}
             />
           ))}
         </div>

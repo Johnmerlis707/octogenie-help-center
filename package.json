@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "npm run dev --prefix \"octogenie help center\"",
+    "build": "npm run build --prefix \"octogenie help center\"",
+    "start": "npm run start --prefix \"octogenie help center\"",
+    "lint": "npm run lint --prefix \"octogenie help center\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

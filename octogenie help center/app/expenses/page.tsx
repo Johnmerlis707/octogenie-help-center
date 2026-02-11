@@ -6,6 +6,7 @@ import FeedbackSection from "@/components/FeedbackSection";
 import {
   addExpenseGuide,
   linkExpenseToCaseGuide,
+  filterExpensesByStatusGuide,
 } from "@/lib/expensesGuide";
 
 export default function ExpensesPage() {
@@ -171,6 +172,35 @@ export default function ExpensesPage() {
             />
           ))}
         </div>
+      </section>
+
+      {/* Filter Section */}
+      <section id="filter-status" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {filterExpensesByStatusGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {filterExpensesByStatusGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {filterExpensesByStatusGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === filterExpensesByStatusGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Expense Management Finalized"
+          description="Efficiently track, categorize, and approve all firm-wide expenses for better financial oversight."
+          icon="Wallet"
+          variant="success"
+        />
       </section>
 
       {/* Feedback Section */}

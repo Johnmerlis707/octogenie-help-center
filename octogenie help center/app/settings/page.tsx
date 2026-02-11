@@ -8,6 +8,7 @@ import {
   manageUsersGuide,
   manageRolesPermissionsGuide,
   manageApprovalsGuide,
+  otherSettingsGuide,
 } from "@/lib/settingsGuide";
 
 export default function SettingsPage() {
@@ -299,7 +300,35 @@ export default function SettingsPage() {
         />
       </section>
 
-      {/* Feedback Section */}
+      {/* Platform Preferences & Support Section */}
+      <section id="other-settings" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {otherSettingsGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {otherSettingsGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {otherSettingsGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === otherSettingsGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Customization Complete"
+          description="Your platform preferences and notification settings are now updated for a personalized experience."
+          icon="Settings"
+          variant="success"
+        />
+      </section>
+
       <FeedbackSection pageId="settings" />
     </div>
   );

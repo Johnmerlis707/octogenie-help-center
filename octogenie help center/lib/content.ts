@@ -49,6 +49,24 @@ export const workflowSteps: WorkflowStep[] = [
   },
   {
     number: 6,
+    title: "Tasks",
+    description: "Assign and track legal work for your team",
+    color: "blue-light",
+    icon: "CheckSquare",
+    preview: "Manage project tasks, assign work to associates, and set deadlines to ensure every case moves forward on schedule.",
+    href: "/tasks",
+  },
+  {
+    number: 7,
+    title: "Time Tracking",
+    description: "Log hours spent on cases for accurate billing",
+    color: "indigo-light",
+    icon: "Clock",
+    preview: "Maintain transparency with clients by logging exactly how much time is spent on hearings, research, and meetings.",
+    href: "/time-tracking",
+  },
+  {
+    number: 8,
     title: "Invoice",
     description: "Generate professional invoices and track billing for your services",
     color: "orange-light",
@@ -57,7 +75,7 @@ export const workflowSteps: WorkflowStep[] = [
     href: "/invoices",
   },
   {
-    number: 7,
+    number: 9,
     title: "Payment",
     description: "Record payments, track collections, and manage your finances",
     color: "green-light",
@@ -139,6 +157,20 @@ export const moduleGuides: ModuleGuide[] = [
     href: "/expenses",
   },
   {
+    id: "tasks",
+    title: "Tasks",
+    description: "Assign & track work",
+    icon: "CheckSquare",
+    href: "/tasks",
+  },
+  {
+    id: "time-tracking",
+    title: "Time Tracking",
+    description: "Log your hours",
+    icon: "Clock",
+    href: "/time-tracking",
+  },
+  {
     id: "settings",
     title: "Settings",
     description: "Configure system",
@@ -180,6 +212,26 @@ export const quickActions: QuickAction[] = [
     icon: "DollarSign",
     href: "/invoices#create-invoice",
   },
+  {
+    title: "Add a Task",
+    icon: "CheckSquare",
+    href: "/tasks#create-task",
+  },
+  {
+    title: "Assign a Task",
+    icon: "Users",
+    href: "/tasks#assign-task",
+  },
+  {
+    title: "Start Timer",
+    icon: "Clock",
+    href: "/time-tracking#track-time-timer",
+  },
+  {
+    title: "Log Manual Time",
+    icon: "List",
+    href: "/time-tracking#track-time-manual",
+  },
 ];
 
 
@@ -206,6 +258,7 @@ export const navigation: NavItem[] = [
       { title: "Add a Client", href: "/clients#add-client" },
       { title: "Edit Client", href: "/clients#edit-client" },
       { title: "Upload Documents", href: "/clients#upload-documents" },
+      { title: "Delete Client", href: "/clients#delete-client" },
     ],
   },
   {
@@ -215,6 +268,7 @@ export const navigation: NavItem[] = [
     children: [
       { title: "Create Matter", href: "/matters#create-matter" },
       { title: "Parties & Contacts", href: "/matters#parties" },
+      { title: "Update Status", href: "/matters#update-status" },
       { title: "Bulk Upload", href: "/matters#bulk-upload" },
       { title: "Export to Excel", href: "/matters#export" },
     ],
@@ -276,8 +330,40 @@ export const navigation: NavItem[] = [
     children: [
       { title: "Add Expense", href: "/expenses#add-expense" },
       { title: "Link to Case", href: "/expenses#link-case" },
+      { title: "Filter Status", href: "/expenses#filter-status" },
     ],
   },
-  { title: "Settings", href: "/settings", icon: "Settings" },
+  {
+    title: "Tasks",
+    href: "/tasks",
+    icon: "CheckSquare",
+    children: [
+      { title: "Create Task", href: "/tasks#create-task" },
+      { title: "Assign Task", href: "/tasks#assign-task" },
+      { title: "Set Due Date", href: "/tasks#set-due-date" },
+    ],
+  },
+  {
+    title: "Time Tracking",
+    href: "/time-tracking",
+    icon: "Clock",
+    children: [
+      { title: "Using Timer", href: "/time-tracking#track-time-timer" },
+      { title: "Manual Entry", href: "/time-tracking#track-time-manual" },
+      { title: "Review Time", href: "/time-tracking#review-time" },
+    ],
+  },
+  {
+    title: "Settings",
+    href: "/settings",
+    icon: "Settings",
+    children: [
+      { title: "Navigation", href: "/settings#navigate-settings" },
+      { title: "Manage Users", href: "/settings#users-roles" },
+      { title: "Roles & Permissions", href: "/settings#roles-permissions" },
+      { title: "Approvals", href: "/settings#approvals" },
+      { title: "Preferences", href: "/settings#other-settings" },
+    ],
+  },
   { title: "FAQs", href: "/faqs", icon: "HelpCircle" },
 ];

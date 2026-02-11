@@ -6,6 +6,8 @@ import FeedbackSection from "@/components/FeedbackSection";
 import {
   addHearingGuide,
   viewHearingsGuide,
+  rescheduleHearingGuide,
+  remindersGuide,
 } from "@/lib/calendarGuide";
 
 export default function CalendarPage() {
@@ -158,6 +160,57 @@ export default function CalendarPage() {
           title="You're all set!"
           description="All upcoming hearings are displayed in the selected view format."
           icon="CheckCircle2"
+          variant="success"
+        />
+      </section>
+
+      {/* Reschedule Section */}
+      <section id="reschedule" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {rescheduleHearingGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {rescheduleHearingGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {rescheduleHearingGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === rescheduleHearingGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Reminders Section */}
+      <section id="reminders" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {remindersGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {remindersGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {remindersGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === remindersGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Schedule Managed Successfully"
+          description="Your calendar is now updated with hearings and automatic reminders to keep your practice on track."
+          icon="Calendar"
           variant="success"
         />
       </section>

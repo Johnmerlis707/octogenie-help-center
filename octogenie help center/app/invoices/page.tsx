@@ -6,6 +6,7 @@ import FeedbackSection from "@/components/FeedbackSection";
 import {
   createInvoiceGuide,
   trackInvoiceStatusGuide,
+  searchAndFilterInvoicesGuide,
 } from "@/lib/invoicesGuide";
 
 export default function InvoicesPage() {
@@ -182,6 +183,35 @@ export default function InvoicesPage() {
             />
           ))}
         </div>
+      </section>
+
+      {/* Search and Filter Section */}
+      <section id="search-filter" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {searchAndFilterInvoicesGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {searchAndFilterInvoicesGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {searchAndFilterInvoicesGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === searchAndFilterInvoicesGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Billing Cycle Managed"
+          description="You can now easily find, track, and manage all your firm's invoices from a single dashboard."
+          icon="Receipt"
+          variant="success"
+        />
       </section>
 
       {/* Feedback Section */}

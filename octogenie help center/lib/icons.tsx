@@ -25,6 +25,8 @@ import {
   List,
   Zap,
   Workflow,
+  CheckSquare,
+  Clock,
 } from "lucide-react";
 
 export const Icons = {
@@ -54,4 +56,6 @@ export const Icons = {
   List,
   Zap,
   Workflow,
+  CheckSquare,
+  Clock,
 };

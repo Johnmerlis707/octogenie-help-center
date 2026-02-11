@@ -77,6 +77,12 @@ export default function GettingStartedPage() {
             <strong>Expenses:</strong> Record and manage expenses
           </li>
           <li>
+            <strong>Tasks:</strong> Assign and track legal work for your team
+          </li>
+          <li>
+            <strong>Time Tracking:</strong> Log hours spent on cases for accurate billing
+          </li>
+          <li>
             <strong>Settings:</strong> Configure your account and preferences
           </li>
         </ul>
@@ -154,6 +160,28 @@ export default function GettingStartedPage() {
               6
             </div>
             <div>
+              <h3 className="font-semibold text-gray-900 mb-1">Tasks</h3>
+              <p className="text-gray-700">
+                Assign and track legal work for your team to ensure deadlines are met
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-semibold flex-shrink-0">
+              7
+            </div>
+            <div>
+              <h3 className="font-semibold text-gray-900 mb-1">Time Tracking</h3>
+              <p className="text-gray-700">
+                Log hours spent on cases for accurate and transparent client billing
+              </p>
+            </div>
+          </div>
+          <div className="flex items-start gap-4">
+            <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-semibold flex-shrink-0">
+              8
+            </div>
+            <div>
               <h3 className="font-semibold text-gray-900 mb-1">Invoice</h3>
               <p className="text-gray-700">
                 Generate professional invoices and track billing for your
@@ -163,7 +191,7 @@ export default function GettingStartedPage() {
           </div>
           <div className="flex items-start gap-4">
             <div className="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center font-semibold flex-shrink-0">
-              7
+              9
             </div>
             <div>
               <h3 className="font-semibold text-gray-900 mb-1">Payment</h3>

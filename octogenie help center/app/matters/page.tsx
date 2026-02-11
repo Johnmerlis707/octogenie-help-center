@@ -5,8 +5,12 @@ import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
 import {
   createMatterGuide,
-  linkClientToMatterGuide,
+  linkClientGuide,
   updateMatterStatusGuide,
+  editMatterGuide,
+  bulkUploadGuide,
+  exportExcelGuide,
+  filterMattersGuide,
 } from "@/lib/mattersGuide";
 
 export default function MattersPage() {
@@ -57,10 +61,10 @@ export default function MattersPage() {
       <section id="create-matter" className="space-y-8">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            How to Create a New Matter
+            {createMatterGuide.title}
           </h2>
           <p className="text-lg text-gray-600">
-            Organize legal work into structured matters
+            {createMatterGuide.subtitle}
           </p>
         </div>
 
@@ -82,7 +86,6 @@ export default function MattersPage() {
               </div>
             </div>
           </div>
-          {/* Progress Indicator */}
           <div className="flex gap-1">
             {Array.from({ length: createMatterGuide.totalSteps }).map((_, i) => (
               <div
@@ -93,7 +96,6 @@ export default function MattersPage() {
           </div>
         </div>
 
-        {/* Steps */}
         <div className="space-y-0">
           {createMatterGuide.steps.map((step, index) => (
             <GuideStep
@@ -103,117 +105,41 @@ export default function MattersPage() {
             />
           ))}
         </div>
-
-        {/* Completion Banner */}
-        <ProgressBanner
-          title="You're all set!"
-          description="The matter is successfully created and appears in your Matters list."
-          icon="CheckCircle2"
-          variant="success"
-        />
       </section>
 
-      {/* Link Client to Matter Section */}
-      <section id="parties" className="space-y-8">
+      {/* Link Client Section */}
+      <section id="link-client" className="space-y-8">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            How to Link a Client to a Matter
+            {linkClientGuide.title}
           </h2>
           <p className="text-lg text-gray-600">
-            Associate a client with a matter
+            {linkClientGuide.subtitle}
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {linkClientToMatterGuide.title}
-              </h3>
-              <p className="text-gray-600">
-                {linkClientToMatterGuide.description}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {linkClientToMatterGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {linkClientToMatterGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: linkClientToMatterGuide.totalSteps }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-2 flex-1 bg-primary rounded-full"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Steps */}
         <div className="space-y-0">
-          {linkClientToMatterGuide.steps.map((step, index) => (
+          {linkClientGuide.steps.map((step, index) => (
             <GuideStep
               key={step.number}
               {...step}
-              isLast={index === linkClientToMatterGuide.steps.length - 1}
+              isLast={index === linkClientGuide.steps.length - 1}
             />
           ))}
         </div>
       </section>
 
-      {/* Update Matter Status Section */}
+      {/* Update Status Section */}
       <section id="update-status" className="space-y-8">
         <div className="space-y-4">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
-            How to Update Matter Status
+            {updateMatterStatusGuide.title}
           </h2>
           <p className="text-lg text-gray-600">
-            Change the status of a matter
+            {updateMatterStatusGuide.subtitle}
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {updateMatterStatusGuide.title}
-              </h3>
-              <p className="text-gray-600">
-                {updateMatterStatusGuide.description}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {updateMatterStatusGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {updateMatterStatusGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: updateMatterStatusGuide.totalSteps }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-2 flex-1 bg-primary rounded-full"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Steps */}
         <div className="space-y-0">
           {updateMatterStatusGuide.steps.map((step, index) => (
             <GuideStep
@@ -225,7 +151,101 @@ export default function MattersPage() {
         </div>
       </section>
 
-      {/* Feedback Section */}
+      {/* Edit Matter Section */}
+      <section id="edit-matter" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {editMatterGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {editMatterGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {editMatterGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === editMatterGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Bulk Upload Section */}
+      <section id="bulk-upload" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {bulkUploadGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {bulkUploadGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {bulkUploadGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === bulkUploadGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Export Section */}
+      <section id="export" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {exportExcelGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {exportExcelGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {exportExcelGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === exportExcelGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Filter Section */}
+      <section id="filter-matters" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {filterMattersGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {filterMattersGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {filterMattersGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === filterMattersGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Consolidated Practice Management"
+          description="By mastering matters, you can link all cases, documents, and billings for a centralized practice management experience."
+          icon="Layers"
+          variant="info"
+        />
+      </section>
+
       <FeedbackSection pageId="matters" />
     </div>
   );
