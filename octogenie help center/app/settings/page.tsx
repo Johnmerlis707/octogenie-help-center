@@ -9,6 +9,11 @@ import {
   manageRolesPermissionsGuide,
   manageApprovalsGuide,
   otherSettingsGuide,
+  notificationsGuide,
+  feeManagementGuide,
+  languageAppearanceGuide,
+  templatesGuide,
+  helpSupportGuide,
 } from "@/lib/settingsGuide";
 
 export default function SettingsPage() {
@@ -322,9 +327,154 @@ export default function SettingsPage() {
         </div>
 
         <ProgressBanner
-          title="Customization Complete"
-          description="Your platform preferences and notification settings are now updated for a personalized experience."
+          title="Profile Updated"
+          description="Your account and organization details are now up to date."
           icon="Settings"
+          variant="success"
+        />
+      </section>
+
+      {/* Notifications Section */}
+      <section id="notifications" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {notificationsGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {notificationsGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {notificationsGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === notificationsGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Notifications Configured"
+          description="Your notification preferences are set and you'll receive alerts based on your selections."
+          icon="Bell"
+          variant="success"
+        />
+      </section>
+
+      {/* Fee Management Section */}
+      <section id="fee-management" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {feeManagementGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {feeManagementGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {feeManagementGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === feeManagementGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Fee Structure Set"
+          description="Your billing rates and service fees are configured for accurate invoicing."
+          icon="DollarSign"
+          variant="success"
+        />
+      </section>
+
+      {/* Language & Appearance Section */}
+      <section id="language-appearance" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {languageAppearanceGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {languageAppearanceGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {languageAppearanceGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === languageAppearanceGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Interface Customized"
+          description="Your language and appearance preferences are applied."
+          icon="Palette"
+          variant="success"
+        />
+      </section>
+
+      {/* Templates Section */}
+      <section id="templates" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {templatesGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {templatesGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {templatesGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === templatesGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Templates Ready"
+          description="Your document templates are configured and ready for use."
+          icon="FileText"
+          variant="success"
+        />
+      </section>
+
+      {/* Help & Support Section */}
+      <section id="help-support" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {helpSupportGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {helpSupportGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {helpSupportGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === helpSupportGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+
+        <ProgressBanner
+          title="Support Resources Available"
+          description="You now know how to access help and support whenever needed."
+          icon="HelpCircle"
           variant="success"
         />
       </section>

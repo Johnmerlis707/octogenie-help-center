@@ -7,6 +7,7 @@ import {
   addExpenseGuide,
   linkExpenseToCaseGuide,
   filterExpensesByStatusGuide,
+  searchAndFilterExpensesGuide,
 } from "@/lib/expensesGuide";
 
 export default function ExpensesPage() {
@@ -191,6 +192,28 @@ export default function ExpensesPage() {
               key={step.number}
               {...step}
               isLast={index === filterExpensesByStatusGuide.steps.length - 1}
+            />
+          ))}
+        </div>
+      </section>
+
+      {/* Search and Filter Section */}
+      <section id="search-filter" className="space-y-8">
+        <div className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+            {searchAndFilterExpensesGuide.title}
+          </h2>
+          <p className="text-lg text-gray-600">
+            {searchAndFilterExpensesGuide.subtitle}
+          </p>
+        </div>
+
+        <div className="space-y-0">
+          {searchAndFilterExpensesGuide.steps.map((step, index) => (
+            <GuideStep
+              key={step.number}
+              {...step}
+              isLast={index === searchAndFilterExpensesGuide.steps.length - 1}
             />
           ))}
         </div>

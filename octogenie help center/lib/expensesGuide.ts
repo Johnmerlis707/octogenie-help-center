@@ -124,3 +124,54 @@ export const filterExpensesByStatusGuide: GuideSection = {
     },
   ],
 };
+
+export const searchAndFilterExpensesGuide: GuideSection = {
+  id: "search-filter",
+  title: "Search and Filter Expenses",
+  subtitle: "Find specific expense records quickly",
+  description: "Use advanced search and filter options to locate expenses by client, case, category, date range, or amount. Combine multiple filters for precise results.",
+  estimatedTime: "3 min",
+  totalSteps: 6,
+  steps: [
+    {
+      number: 1,
+      title: "Access Expenses Dashboard",
+      description: "Navigate to the Expenses module from the left-hand menu. The dashboard displays all expense records.",
+      image: "/assets/expenses/Expenses%20-%20Dashboard.png",
+      imageAlt: "Expenses dashboard",
+    },
+    {
+      number: 2,
+      title: "Use Search Bar",
+      description: "At the top of the expense list, use the search bar to find expenses by description, client name, or case/matter reference. Type your search term and results will filter automatically.",
+      imageAlt: "Search bar",
+    },
+    {
+      number: 3,
+      title: "Apply Status Filter",
+      description: "Use the Status dropdown to filter by expense status: Pending, Approved, Rejected, Paid, Reimbursed, or Cancelled.",
+      image: "/assets/expenses/Expenses%20-%20Filter%20option%20for%20status.png",
+      imageAlt: "Status filter",
+    },
+    {
+      number: 4,
+      title: "Filter by Category",
+      description: "Select expense categories such as Travel, Filing Fees, Internet, Telephone, Printing, or Other to view specific types of expenses.",
+      imageAlt: "Category filter",
+    },
+    {
+      number: 5,
+      title: "Filter by Date Range",
+      description: "Use the date range picker to view expenses within a specific time period. This helps with monthly reporting and reconciliation.",
+      imageAlt: "Date range filter",
+    },
+    {
+      number: 6,
+      title: "Combine Multiple Filters",
+      description: "Apply multiple filters simultaneously for precise results. For example, filter by 'Pending' status + 'Travel' category + specific date range to find all pending travel expenses for a period.",
+      imageAlt: "Combined filters",
+      expectedOutcome: "Quickly locate specific expense records for review, approval, or reporting purposes.",
+      isLast: true,
+    },
+  ],
+};
