@@ -15,6 +15,7 @@ import {
   Rocket,
   ChevronDown,
   ChevronUp,
+  ChevronRight,
   CheckCircle2,
   Sparkles,
   FileCheck,
@@ -27,6 +28,8 @@ import {
   Workflow,
   CheckSquare,
   Clock,
+  Eye,
+  ExternalLink,
 } from "lucide-react";
 
 export const Icons = {
@@ -46,6 +49,7 @@ export const Icons = {
   Rocket,
   ChevronDown,
   ChevronUp,
+  ChevronRight,
   CheckCircle2,
   Sparkles,
   FileCheck,
@@ -58,4 +62,6 @@ export const Icons = {
   Workflow,
   CheckSquare,
   Clock,
+  Eye,
+  ExternalLink,
 };

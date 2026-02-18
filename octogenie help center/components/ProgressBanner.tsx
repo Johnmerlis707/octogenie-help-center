@@ -1,6 +1,7 @@
 "use client";
 
 import { Icons } from "@/lib/icons";
+import LinkText from "./LinkText";
 
 interface ProgressBannerProps {
   title: string;
@@ -24,7 +25,9 @@ export default function ProgressBanner({
       <IconComponent className={`w-6 h-6 ${iconColor} flex-shrink-0 mt-0.5`} />
       <div>
         <h4 className="font-semibold text-gray-900 mb-1">{title}</h4>
-        <p className="text-sm text-gray-700">{description}</p>
+        <p className="text-sm text-gray-700">
+          <LinkText>{description}</LinkText>
+        </p>
       </div>
     </div>
   );

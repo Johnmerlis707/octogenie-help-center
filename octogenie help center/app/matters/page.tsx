@@ -3,6 +3,7 @@
 import GuideStep from "@/components/GuideStep";
 import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
+import TableOfContents from "@/components/TableOfContents";
 import {
   createMatterGuide,
   linkClientGuide,
@@ -12,6 +13,17 @@ import {
   exportExcelGuide,
   filterMattersGuide,
 } from "@/lib/mattersGuide";
+
+const mattersPageToc = [
+  { label: "What is a Matter in OctoGenie?", href: "#what-is-matter" },
+  { label: "Create a Matter", href: "#create-matter" },
+  { label: "Link Client to Matter", href: "#link-client" },
+  { label: "Update Matter Status", href: "#update-status" },
+  { label: "Edit a Matter", href: "#edit-matter" },
+  { label: "Bulk Upload Matters", href: "#bulk-upload" },
+  { label: "Export to Excel", href: "#export" },
+  { label: "Filter Matters", href: "#filter-matters" },
+];
 
 export default function MattersPage() {
   return (
@@ -30,6 +42,8 @@ export default function MattersPage() {
           Organize and track all your legal matters in one place.
         </p>
       </div>
+
+      <TableOfContents links={mattersPageToc} />
 
       {/* What is a Matter Section */}
       <section id="what-is-matter" className="space-y-6">

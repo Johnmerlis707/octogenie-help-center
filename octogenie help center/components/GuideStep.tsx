@@ -1,13 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { Icons } from "@/lib/icons";
+import LinkText from "./LinkText";
+import { getPartnerLinkForStep } from "@/lib/partnerLinks";
 
 import { GuideStepData } from "@/lib/types";
 
 
 interface GuideStepProps extends GuideStepData {
   showConnector?: boolean;
+  pageId?: string;
 }
 
 export default function GuideStep({
@@ -21,7 +25,15 @@ export default function GuideStep({
   tips,
   isLast = false,
   showConnector = true,
+  pageId,
 }: GuideStepProps) {
+  const pathname = usePathname();
+  
+  // Auto-detect pageId from route if not provided
+  const detectedPageId = pageId || (pathname ? pathname.split('/').filter(Boolean)[0] || 'home' : 'home');
+  
+  // Get partner website link for this step
+  const partnerLink = getPartnerLinkForStep(title, description, detectedPageId);
   return (
     <div className="flex gap-6 md:gap-8">
       {/* Step Number Circle */}
@@ -58,9 +70,30 @@ export default function GuideStep({
             </h3>
 
             {/* Description */}
-            <p className="text-gray-700 leading-relaxed">{description}</p>
+            <p className="text-gray-700 leading-relaxed">
+              <LinkText>{description}</LinkText>
+            </p>
 
-            {/* Action Button */}
+            {/* Try It Now Button - Links to Partner Website */}
+            {partnerLink && (
+              <div className="pt-3">
+                <a
+                  href={partnerLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-primary to-emerald-500 text-white rounded-xl font-semibold hover:from-primary/90 hover:to-emerald-500/90 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105 active:scale-95"
+                >
+                  <Icons.ExternalLink className="w-4 h-4" />
+                  <span>{partnerLink.label}</span>
+                  <Icons.ChevronRight className="w-4 h-4" />
+                </a>
+                <p className="text-xs text-gray-500 mt-2">
+                  Opens in a new tab • {partnerLink.url.replace("https://", "")}
+                </p>
+              </div>
+            )}
+
+            {/* Action Button (Legacy - kept for backward compatibility) */}
             {actionButton && (
               <div className="flex items-start gap-3 pt-2">
                 <button className="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition-colors flex items-center gap-2 shadow-md">
@@ -101,7 +134,9 @@ export default function GuideStep({
                     <h4 className="font-semibold text-green-900 mb-1">
                       Expected Outcome
                     </h4>
-                    <p className="text-green-800 text-sm">{expectedOutcome}</p>
+                    <p className="text-green-800 text-sm">
+                      <LinkText>{expectedOutcome}</LinkText>
+                    </p>
                   </div>
                 </div>
               </div>

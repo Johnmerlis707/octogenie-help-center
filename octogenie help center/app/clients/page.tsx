@@ -3,12 +3,20 @@
 import GuideStep from "@/components/GuideStep";
 import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
+import TableOfContents from "@/components/TableOfContents";
 import {
   addClientGuide,
   editClientGuide,
   uploadClientDocumentsGuide,
   deleteClientGuide,
 } from "@/lib/clientsGuide";
+
+const clientsPageToc = [
+  { label: "How to Add a New Client", href: "#add-client" },
+  { label: "Edit Client Details", href: "#edit-client" },
+  { label: "Upload Client Documents", href: "#upload-documents" },
+  { label: "Delete a Client", href: "#delete-client" },
+];
 
 export default function ClientsPage() {
   return (
@@ -28,6 +36,8 @@ export default function ClientsPage() {
           location.
         </p>
       </div>
+
+      <TableOfContents links={clientsPageToc} />
 
       {/* Add a New Client Section */}
       <section id="add-client" className="space-y-8">

@@ -3,11 +3,20 @@
 import GuideStep from "@/components/GuideStep";
 import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
+import TableOfContents from "@/components/TableOfContents";
+import LinkText from "@/components/LinkText";
 import {
   addLeadGuide,
   searchFilterGuide,
   convertToClientGuide,
 } from "@/lib/leadsGuide";
+
+const leadsPageToc = [
+  { label: "What is the Lead Feature?", href: "#what-is-lead" },
+  { label: "How to Add a New Lead", href: "#add-lead" },
+  { label: "Search and Filter Leads", href: "#search-filter" },
+  { label: "Converting Lead to Client", href: "#convert" },
+];
 
 export default function LeadsPage() {
   return (
@@ -29,6 +38,9 @@ export default function LeadsPage() {
         </p>
       </div>
 
+      {/* Link-based navigation */}
+      <TableOfContents links={leadsPageToc} />
+
       {/* What is the Lead Feature Section */}
       <section id="what-is-lead" className="space-y-6">
         <div>
@@ -36,16 +48,18 @@ export default function LeadsPage() {
             What is the Lead Feature?
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            A lead is a potential client who has shown interest in your legal
-            services but hasn't yet become an official client. The Leads module
-            helps you:
+            <LinkText>
+              A lead is a potential client who has shown interest in your legal
+              services but hasn't yet become an official client. The Leads module
+              helps you:
+            </LinkText>
           </p>
           <ul className="list-disc list-inside text-gray-700 mt-4 space-y-2 ml-4">
-            <li>Track all incoming enquiries</li>
-            <li>Manage lead status (New, Contacted, Qualified, Converted)</li>
-            <li>Assign leads to specific lawyers</li>
-            <li>Monitor lead value and priority</li>
-            <li>Convert qualified leads into clients</li>
+            <li><LinkText>Track all incoming enquiries</LinkText></li>
+            <li><LinkText>Manage lead status (New, Contacted, Qualified, Converted)</LinkText></li>
+            <li><LinkText>Assign leads to specific lawyers</LinkText></li>
+            <li><LinkText>Monitor lead value and priority</LinkText></li>
+            <li><LinkText>Convert qualified leads into clients</LinkText></li>
           </ul>
         </div>
 
@@ -54,10 +68,12 @@ export default function LeadsPage() {
             <span className="text-2xl">💡</span>
             <div>
               <h4 className="font-semibold text-green-900 mb-1">Best Practice</h4>
-              <p className="text-green-800 text-sm">
-                Respond to new leads within 24 hours to maximize conversion rates.
-                Use the status feature to track your follow-ups.
-              </p>
+                <p className="text-green-800 text-sm">
+                  <LinkText>
+                    Respond to new leads within 24 hours to maximize conversion rates.
+                    Use the status feature to track your follow-ups.
+                  </LinkText>
+                </p>
             </div>
           </div>
         </div>
@@ -106,6 +122,7 @@ export default function LeadsPage() {
               key={step.number}
               {...step}
               isLast={index === addLeadGuide.steps.length - 1}
+              pageId="leads"
             />
           ))}
         </div>
@@ -171,6 +188,7 @@ export default function LeadsPage() {
               key={step.number}
               {...step}
               isLast={index === searchFilterGuide.steps.length - 1}
+              pageId="leads"
             />
           ))}
         </div>
@@ -236,6 +254,7 @@ export default function LeadsPage() {
               key={step.number}
               {...step}
               isLast={index === convertToClientGuide.steps.length - 1}
+              pageId="leads"
             />
           ))}
         </div>
@@ -256,8 +275,10 @@ export default function LeadsPage() {
                   What Happens Next?
                 </h4>
                 <p className="text-blue-800 text-sm">
-                  After conversion, you can create Matters and Cases for the new
-                  client and begin your legal work.
+                  <LinkText>
+                    After conversion, you can create Matters and Cases for the new
+                    client and begin your legal work.
+                  </LinkText>
                 </p>
               </div>
             </div>
