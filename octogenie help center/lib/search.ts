@@ -2,57 +2,24 @@
 
 import { moduleGuides, navigation, workflowSteps, quickActions } from "./content";
 import { SearchResult, GuideSection } from "./types";
+import { allGuides, guidePathFallbackMap } from "./guidesRegistry";
 
+function getPageUrlForGuide(guide: GuideSection): string {
+  const matchesNavigation = navigation
+    .flatMap((item) => item.children ?? [])
+    .find((child) => child.href.endsWith(`#${guide.id}`));
 
-// Import all guide data
-import { addLeadGuide, searchFilterGuide, convertToClientGuide } from "./leadsGuide";
-import { addClientGuide, editClientGuide, uploadClientDocumentsGuide } from "./clientsGuide";
-import { createMatterGuide, linkClientToMatterGuide, updateMatterStatusGuide } from "./mattersGuide";
-import { createCaseManualGuide, createCaseFromECourtGuide, closeCaseGuide } from "./casesGuide";
-import { addHearingGuide, viewHearingsGuide } from "./calendarGuide";
-import { uploadDocumentsGuide, linkDocumentsGuide } from "./documentsGuide";
+  if (matchesNavigation) {
+    return matchesNavigation.href.split("#")[0];
+  }
 
-import { qaGuide, draftGuide, analyzeGuide } from "./aiAssistantGuide";
-import { createInvoiceGuide, trackInvoiceStatusGuide } from "./invoicesGuide";
-import { recordPaymentGuide, filterPaymentsGuide } from "./paymentsGuide";
-import { addExpenseGuide, linkExpenseToCaseGuide } from "./expensesGuide";
-import { navigateToSettingsGuide, manageUsersGuide, manageRolesPermissionsGuide } from "./settingsGuide";
+  if (guidePathFallbackMap[guide.id]) {
+    return guidePathFallbackMap[guide.id];
+  }
 
-
-
-
-// Collect all guides
-const allGuides: GuideSection[] = [
-  addLeadGuide,
-  searchFilterGuide,
-  convertToClientGuide,
-  addClientGuide,
-  editClientGuide,
-  uploadClientDocumentsGuide,
-  createMatterGuide,
-  linkClientToMatterGuide,
-  updateMatterStatusGuide,
-  createCaseManualGuide,
-  createCaseFromECourtGuide,
-  closeCaseGuide,
-  addHearingGuide,
-  viewHearingsGuide,
-  uploadDocumentsGuide,
-  linkDocumentsGuide,
-
-  qaGuide,
-  draftGuide,
-  analyzeGuide,
-  createInvoiceGuide,
-  trackInvoiceStatusGuide,
-  recordPaymentGuide,
-  filterPaymentsGuide,
-  addExpenseGuide,
-  linkExpenseToCaseGuide,
-  navigateToSettingsGuide,
-  manageUsersGuide,
-  manageRolesPermissionsGuide,
-];
+  const moduleFromId = guide.id.split("-")[0];
+  return `/${moduleFromId}`;
+}
 
 // Build search index
 function buildSearchIndex(): SearchResult[] {
@@ -113,46 +80,8 @@ function buildSearchIndex(): SearchResult[] {
 
   // Add guides and their steps
   allGuides.forEach((guide) => {
-    // Determine the page URL based on guide ID
-    const moduleMap: Record<string, string> = {
-      "add-lead": "/leads",
-      "search-filter": "/leads",
-      "convert": "/leads",
-      "add-client": "/clients",
-      "edit-client": "/clients",
-      "upload-documents": "/clients",
-      "create-matter": "/matters",
-      "parties": "/matters",
-      "link-client": "/matters",
-      "update-status": "/matters",
-      "bulk-upload": "/matters",
-      "export": "/matters",
-      "manual-entry": "/cases",
-      "ecourt": "/cases",
-      "close-case": "/cases",
-      "add-hearing": "/calendar",
-      "view-hearings": "/calendar",
-      "reschedule": "/calendar",
-      "reminders": "/calendar",
-      "upload-document": "/documents",
-      "link-document": "/documents",
-      "qa": "/ai-assistant",
-      "draft": "/ai-assistant",
-      "analyze": "/ai-assistant",
-      "create-invoice": "/invoices",
-      "track-status": "/invoices",
-      "record-payment": "/payments",
-      "filter-payments": "/payments",
-      "add-expense": "/expenses",
-      "link-case": "/expenses",
-      "navigate-settings": "/settings",
-      "manage-users": "/settings",
-      "roles-permissions": "/settings",
-    };
-
-    // Find module from guide ID
-    const moduleName = guide.id.split("-")[0];
-    const pageUrl = moduleMap[guide.id] || `/${moduleName}` || "/";
+    const pageUrl = getPageUrlForGuide(guide);
+    const moduleName = pageUrl.replace("/", "") || "home";
 
     // Add guide itself
     results.push({

@@ -200,7 +200,7 @@ export const quickActions: QuickAction[] = [
   {
     title: "Create a Case",
     icon: "Scale",
-    href: "/cases#create-case",
+    href: "/cases#manual-entry",
   },
   {
     title: "Schedule Hearing",

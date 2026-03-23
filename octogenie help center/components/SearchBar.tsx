@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Icons } from "@/lib/icons";
@@ -71,38 +71,7 @@ export default function SearchBar() {
     }
   }, [isOpen]);
 
-  // Handle keyboard navigation in results
-  useEffect(() => {
-    if (!isOpen || results.length === 0) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowDown") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev < results.length - 1 ? prev + 1 : prev));
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : 0));
-      } else if (e.key === "Enter" && results[selectedIndex]) {
-        e.preventDefault();
-        handleResultClick(results[selectedIndex]);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, results, selectedIndex]);
-
-  // Scroll selected result into view
-  useEffect(() => {
-    if (resultsRef.current && selectedIndex >= 0) {
-      const selectedElement = resultsRef.current.children[selectedIndex] as HTMLElement;
-      if (selectedElement) {
-        selectedElement.scrollIntoView({ block: "nearest", behavior: "smooth" });
-      }
-    }
-  }, [selectedIndex]);
-
-  const handleResultClick = (result: SearchResult) => {
+  const handleResultClick = useCallback((result: SearchResult) => {
     setIsOpen(false);
     setQuery("");
     setResults([]);
@@ -146,7 +115,38 @@ export default function SearchBar() {
       // Fallback to window.location
       window.location.href = result.href;
     }
-  };
+  }, [router]);
+
+  // Handle keyboard navigation in results
+  useEffect(() => {
+    if (!isOpen || results.length === 0) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev < results.length - 1 ? prev + 1 : prev));
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev > 0 ? prev - 1 : 0));
+      } else if (e.key === "Enter" && results[selectedIndex]) {
+        e.preventDefault();
+        handleResultClick(results[selectedIndex]);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleResultClick, isOpen, results, selectedIndex]);
+
+  // Scroll selected result into view
+  useEffect(() => {
+    if (resultsRef.current && selectedIndex >= 0) {
+      const selectedElement = resultsRef.current.children[selectedIndex] as HTMLElement;
+      if (selectedElement) {
+        selectedElement.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
+    }
+  }, [selectedIndex]);
 
   const getResultIcon = (type: SearchResult["type"]) => {
     switch (type) {

@@ -1,6 +1,7 @@
 "use client";
 
-import GuideStep from "@/components/GuideStep";
+import GuideSummaryCard from "@/components/GuideSummaryCard";
+import GuideStepsList from "@/components/GuideStepsList";
 import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
 import {
@@ -60,49 +61,8 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {navigateToSettingsGuide.title}
-              </h3>
-              <p className="text-gray-600">
-                {navigateToSettingsGuide.description}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {navigateToSettingsGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {navigateToSettingsGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: navigateToSettingsGuide.totalSteps }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-2 flex-1 bg-primary rounded-full"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {navigateToSettingsGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === navigateToSettingsGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={navigateToSettingsGuide} />
+        <GuideStepsList guide={navigateToSettingsGuide} />
 
         {/* Completion Banner */}
         <ProgressBanner
@@ -124,45 +84,8 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {manageUsersGuide.title}
-              </h3>
-              <p className="text-gray-600">{manageUsersGuide.description}</p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {manageUsersGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {manageUsersGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: manageUsersGuide.totalSteps }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 flex-1 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {manageUsersGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === manageUsersGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={manageUsersGuide} />
+        <GuideStepsList guide={manageUsersGuide} />
 
         {/* Completion Banner */}
         <ProgressBanner
@@ -184,51 +107,8 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {manageRolesPermissionsGuide.title}
-              </h3>
-              <p className="text-gray-600">
-                {manageRolesPermissionsGuide.description}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {manageRolesPermissionsGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {manageRolesPermissionsGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: manageRolesPermissionsGuide.totalSteps }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-2 flex-1 bg-primary rounded-full"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {manageRolesPermissionsGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={
-                index === manageRolesPermissionsGuide.steps.length - 1
-              }
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={manageRolesPermissionsGuide} />
+        <GuideStepsList guide={manageRolesPermissionsGuide} />
 
         {/* Completion Banner */}
         <ProgressBanner
@@ -250,51 +130,8 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {manageApprovalsGuide.title}
-              </h3>
-              <p className="text-gray-600">
-                {manageApprovalsGuide.description}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {manageApprovalsGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {manageApprovalsGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: manageApprovalsGuide.totalSteps }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-2 flex-1 bg-primary rounded-full"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {manageApprovalsGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={
-                index === manageApprovalsGuide.steps.length - 1
-              }
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={manageApprovalsGuide} />
+        <GuideStepsList guide={manageApprovalsGuide} />
 
         {/* Completion Banner */}
         <ProgressBanner
@@ -316,15 +153,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {otherSettingsGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === otherSettingsGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={otherSettingsGuide} />
 
         <ProgressBanner
           title="Profile Updated"
@@ -345,15 +174,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {notificationsGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === notificationsGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={notificationsGuide} />
 
         <ProgressBanner
           title="Notifications Configured"
@@ -374,15 +195,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {feeManagementGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === feeManagementGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={feeManagementGuide} />
 
         <ProgressBanner
           title="Fee Structure Set"
@@ -403,15 +216,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {languageAppearanceGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === languageAppearanceGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={languageAppearanceGuide} />
 
         <ProgressBanner
           title="Interface Customized"
@@ -432,15 +237,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {templatesGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === templatesGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={templatesGuide} />
 
         <ProgressBanner
           title="Templates Ready"
@@ -461,15 +258,7 @@ export default function SettingsPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {helpSupportGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === helpSupportGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={helpSupportGuide} />
 
         <ProgressBanner
           title="Support Resources Available"

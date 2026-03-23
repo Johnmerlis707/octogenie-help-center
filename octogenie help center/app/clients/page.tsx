@@ -1,6 +1,7 @@
 "use client";
 
-import GuideStep from "@/components/GuideStep";
+import GuideSummaryCard from "@/components/GuideSummaryCard";
+import GuideStepsList from "@/components/GuideStepsList";
 import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
 import TableOfContents from "@/components/TableOfContents";
@@ -50,45 +51,8 @@ export default function ClientsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {addClientGuide.title}
-              </h3>
-              <p className="text-gray-600">{addClientGuide.description}</p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {addClientGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {addClientGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: addClientGuide.totalSteps }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 flex-1 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {addClientGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === addClientGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={addClientGuide} />
+        <GuideStepsList guide={addClientGuide} />
 
         {/* Completion Banner */}
         <ProgressBanner
@@ -110,45 +74,8 @@ export default function ClientsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {editClientGuide.title}
-              </h3>
-              <p className="text-gray-600">{editClientGuide.description}</p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {editClientGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {editClientGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: editClientGuide.totalSteps }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 flex-1 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {editClientGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === editClientGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={editClientGuide} />
+        <GuideStepsList guide={editClientGuide} />
       </section>
 
       {/* Upload Documents Section */}
@@ -162,49 +89,8 @@ export default function ClientsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {uploadClientDocumentsGuide.title}
-              </h3>
-              <p className="text-gray-600">
-                {uploadClientDocumentsGuide.description}
-              </p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {uploadClientDocumentsGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {uploadClientDocumentsGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: uploadClientDocumentsGuide.totalSteps }).map(
-              (_, i) => (
-                <div
-                  key={i}
-                  className="h-2 flex-1 bg-primary rounded-full"
-                />
-              )
-            )}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {uploadClientDocumentsGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === uploadClientDocumentsGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={uploadClientDocumentsGuide} />
+        <GuideStepsList guide={uploadClientDocumentsGuide} />
       </section>
 
       {/* Delete Client Section */}
@@ -218,45 +104,8 @@ export default function ClientsPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {deleteClientGuide.title}
-              </h3>
-              <p className="text-gray-600">{deleteClientGuide.description}</p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {deleteClientGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {deleteClientGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          {/* Progress Indicator */}
-          <div className="flex gap-1">
-            {Array.from({ length: deleteClientGuide.totalSteps }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 flex-1 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Steps */}
-        <div className="space-y-0">
-          {deleteClientGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === deleteClientGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={deleteClientGuide} />
+        <GuideStepsList guide={deleteClientGuide} />
       </section>
 
       {/* Feedback Section */}

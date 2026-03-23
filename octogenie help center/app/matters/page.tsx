@@ -1,6 +1,7 @@
 "use client";
 
-import GuideStep from "@/components/GuideStep";
+import GuideSummaryCard from "@/components/GuideSummaryCard";
+import GuideStepsList from "@/components/GuideStepsList";
 import ProgressBanner from "@/components/ProgressBanner";
 import FeedbackSection from "@/components/FeedbackSection";
 import TableOfContents from "@/components/TableOfContents";
@@ -82,43 +83,8 @@ export default function MattersPage() {
           </p>
         </div>
 
-        {/* Guide Summary Card */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
-          <div className="flex items-start justify-between mb-4">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                {createMatterGuide.title}
-              </h3>
-              <p className="text-gray-600">{createMatterGuide.description}</p>
-            </div>
-            <div className="text-right">
-              <div className="text-sm text-gray-500">
-                {createMatterGuide.estimatedTime}
-              </div>
-              <div className="text-sm text-gray-500">
-                {createMatterGuide.totalSteps} steps
-              </div>
-            </div>
-          </div>
-          <div className="flex gap-1">
-            {Array.from({ length: createMatterGuide.totalSteps }).map((_, i) => (
-              <div
-                key={i}
-                className="h-2 flex-1 bg-primary rounded-full"
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="space-y-0">
-          {createMatterGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === createMatterGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideSummaryCard guide={createMatterGuide} />
+        <GuideStepsList guide={createMatterGuide} />
       </section>
 
       {/* Link Client Section */}
@@ -132,15 +98,7 @@ export default function MattersPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {linkClientGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === linkClientGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={linkClientGuide} />
       </section>
 
       {/* Update Status Section */}
@@ -154,15 +112,7 @@ export default function MattersPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {updateMatterStatusGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === updateMatterStatusGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={updateMatterStatusGuide} />
       </section>
 
       {/* Edit Matter Section */}
@@ -176,15 +126,7 @@ export default function MattersPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {editMatterGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === editMatterGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={editMatterGuide} />
       </section>
 
       {/* Bulk Upload Section */}
@@ -198,15 +140,7 @@ export default function MattersPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {bulkUploadGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === bulkUploadGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={bulkUploadGuide} />
       </section>
 
       {/* Export Section */}
@@ -220,15 +154,7 @@ export default function MattersPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {exportExcelGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === exportExcelGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={exportExcelGuide} />
       </section>
 
       {/* Filter Section */}
@@ -242,15 +168,7 @@ export default function MattersPage() {
           </p>
         </div>
 
-        <div className="space-y-0">
-          {filterMattersGuide.steps.map((step, index) => (
-            <GuideStep
-              key={step.number}
-              {...step}
-              isLast={index === filterMattersGuide.steps.length - 1}
-            />
-          ))}
-        </div>
+        <GuideStepsList guide={filterMattersGuide} />
 
         <ProgressBanner
           title="Consolidated Practice Management"
